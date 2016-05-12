@@ -1,0 +1,19 @@
+<div class="main-menu">
+  <ul>
+    <li><%= link_to( "Home", page_index_path)%></li>
+    <li><%= link_to( "About Us", page_about_us_path)%></li>
+    <li><%= link_to( "Contact Us", page_contact_us_path)%></li>
+    <li><%= link_to( "Store", stores_path)%></li>
+    <li><%= link_to( "Preferences", edit_user_registration_path)%></li>
+    <li><%= link_to( "Blog", blogs_path)%></li>
+    <li><%= link_to( "Calendar", page_calendar_path)%></li>
+    <li><%= link_to( "Articles", articles_path)%></li>
+    <li><%= link_to( "Registration", new_user_registration_path)%></li>
+    <% if user_signed_in? %>
+        <li><%= link_to( "Log Out", destroy_user_session_path, method: "delete")%></li>
+        <% else %>
+    <li><%= link_to( "Login", new_user_session_path)%></li>
+        <% end %>
+
+  </ul>
+</div>

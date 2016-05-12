@@ -1,0 +1,30 @@
+<h1>newsletter</h1>
+ <p>Find me in app/views/page/newsletter.html.erb</p>
+
+<table border="1">
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Content</th>
+    <th>Publish Date</th>
+  </tr>
+
+  <%= @newsletters.each do | newsletter | %>
+
+  <tr>
+    <td>
+      <%= newsletter.title %>
+    </td>
+    <td>
+      <%= newsletter.author %>
+    </td>
+    <td>
+      <%= newsletter.content %>
+    </td>
+    <td>
+      <%= newsletter.publish_date %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+

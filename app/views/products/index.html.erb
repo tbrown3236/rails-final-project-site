@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+<h2>
+  <% if(current_user && current_user.email) %>
+  <%= current_user.email %>
+      </h2>
+  <% end %>
+<h2>Products</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Sell price in dollars</th>
+      <th>Cost of product in dollars</th>
+      <th>Shipping weight in pounds</th>
+      <th>Thumbnail</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.description.html_safe %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.sell_price %></td>
+        <td><%= product.cost_of_product %></td>
+        <td><%= product.shipping_weight %></td>
+       <td><%= image_tag(product.thumbnail, height: '60',width: '60') %></td>
+        <td><%= link_to 'Show', product %></td>
+        <% if(current_user.try(:administrator?)) %>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end%>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<br>
+
+<%= link_to 'New Product', new_product_path %>

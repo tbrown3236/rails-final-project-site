@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Products</h1>
+<% if(current_user.try(:administrator?)) %>
+    <%= link_to "Product admin", products_path %>
+ <% end %>
+<table>
+  <thead>
+    <tr>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td>
+        <%= link_to product.name, stores_show_path(product) %>
+      </td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

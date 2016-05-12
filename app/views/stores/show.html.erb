@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<%= @product.name %><br/>
+Average Rating:
+<%= (image_tag("star.jpeg", size: "25x25")*@product.comments.average(:rating).to_i).html_safe %></br>
+
+
+<% @product.comments.each do |comment| %>
+    <%= time_ago_in_words(comment.created_at) %> ago,
+    <%= comment.author %> says</br>
+    <%= comment.content %></br>
+    <%= ((image_tag "star.jpeg", size: "50x50") * @product.comments.average(:rating).round(0, 1)).html_safe %></br>
+
+<% end %>
+
+<% if current_user %>
+    <%= form_for([@product, @product.comments.build]) do |f| %>
+
+        <%= f.hidden_field :author, value: current_user.email %>
+
+        <div class="field">
+          <%= f.label :content %><br>
+          <%= f.text_area :content %>
+        </div>
+        <div class="field">
+          <%= f.label :rating %><br>
+          <%= f.number_field :rating %>
+        </div>
+
+        <%= f.hidden_field :product_id %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        <%= link_to 'Back', stores_path %>
+    <% end %>
+<% end %>

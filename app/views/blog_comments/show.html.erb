@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog_comment.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @blog_comment.author %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @blog_comment.content %>
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @blog_comment.published_date %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @blog_comment.rating %>
+</p>
+
+<p>
+  <strong>Blog:</strong>
+  <%= @blog_comment.blog %>
+</p>
+
+<%= link_to 'Edit', blo(@blog_comment) %> |
+<%= link_to 'Back', blog_comments_path %>

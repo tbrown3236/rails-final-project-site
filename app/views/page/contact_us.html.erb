@@ -1,0 +1,30 @@
+<div id="contact">
+
+
+<h1>Contact Us</h1>
+
+
+<div>
+
+<% if @first_name != nil && @last_name != nil %>
+    <%= "First name is: #{@first_name} " %><br/>
+    Last name is: <%= @last_name %>
+<% end %>
+
+
+</div>
+<%= form_tag do %>
+    <%= text_field_tag 'first_name', @first_name, placeholder: 'Enter your first name',class: 'error'%>
+    <%= text_field_tag 'last_name', @last_name, placeholder: 'Enter your last name'%>
+    <%= text_field_tag 'email', @email, placeholder: 'Enter your Email'%>
+    <%= text_field_tag 'phone', @phone, placeholder: 'Enter your Phone Number'%>
+    <%= text_field_tag 'question', @question, placeholder: 'Enter your Question'%>
+    <%= label_tag "subscribe to Newsletter" %>
+    <%= check_box_tag 'newsletter', @newsletter, @newsletter %>
+    <%= label_tag "subscribe to Magazines" %>
+    <%= check_box_tag 'magazine', @magazine, @magazine %>
+    <%= select_tag 'products', options_from_collection_for_select(@products, 'id', 'name') %>
+    <%= submit_tag 'Submit', :class=> 'submit_class' %>
+
+<% end %>
+</div>

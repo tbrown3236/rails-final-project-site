@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @blog.author %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @blog.content.html_safe %>s
+</p>
+
+<p>
+  <strong>Published date:</strong>
+  <%= @blog.published_date %>
+</p>
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
+
+
+<p id="notice"><%= notice %></p>
+
+<%= @blog.title %><br/>
+Average Rating:
+
+<%= (image_tag("star.jpeg", size: "25x25")*@blog.blog_comments.average(:rating).to_i).html_safe %></br>
+
+
+<% @blog.blog_comments.order('created_at DESC').each do |comment| %>
+    <%= time_ago_in_words(comment.created_at) %> ago,
+    <%= comment.author %> says</br>
+    <%= comment.content %></br>
+    <%= ((image_tag "star.jpeg", size: "50x50") * comment.rating.to_i).html_safe %></br>
+
+<% end %>
+
+<% if current_user %>
+    <%= form_for([@blog, @blog.blog_comments.build]) do |f| %>
+
+        <%= f.hidden_field :author, value: current_user.email %>
+
+        <div class="field">
+          <%= f.label :content %><br>
+          <%= f.text_area :content %>
+        </div>
+        <div class="field">
+          <%= f.label :rating %><br>
+          <%= f.number_field :rating %>
+        </div>
+
+        <%= f.hidden_field :blog_id %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        <%= link_to 'Back', blogs_path %>
+    <% end %>
+<% end %>

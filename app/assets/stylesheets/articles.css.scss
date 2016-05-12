@@ -1,0 +1,29 @@
+// Place all the styles related to the Articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1{
+  text-align: center;
+}
+table{
+  background-color: #FFF;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+}
+#new_article{
+  font-weight: bold;
+  width: 500px;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #F47A00;
+}
+#images{
+  height: 200px;
+  width: 200px;
+}
+#show_article{
+  font-weight: bold;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #F47A00;
+}

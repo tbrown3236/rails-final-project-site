@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @recipe.creator %>
+</p>
+
+<p>
+  <strong>Ingredients:</strong>
+  <%= @recipe.ingredients %>
+</p>
+
+<p>
+  <strong>Instructions:</strong>
+  <%= @recipe.instructions %>
+</p>
+
+<p>
+  <strong>Thumbnail:</strong>
+  <%= image_tag(@recipe.thumbnail) %>
+</p>
+
+<div id="image">
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@recipe.picture) %>
+</p>
+</div>
+
+<p>
+  <strong>Last cooked:</strong>
+  <%= @recipe.last_cooked %>
+</p>
+<p>
+  <strong>Calories:</strong>
+  <%= @recipe.calories %>
+</p>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<%= link_to 'Back', recipes_path %>
